@@ -1,0 +1,90 @@
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link } from "next/link";
+
+export default function Page() {
+  const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState<"en" | "vi">("en");
+
+  useEffect(() => {
+    const stored = typeof window !== "undefined" ? (localStorage.getItem("lang") as "en" | "vi" | null) : null;
+    if (stored && stored !== lang) setLang(stored);
+  }, []);
+
+  function onLangChange(value: string) {
+    const next = value === "vi" ? "vi" : "en";
+    setLang(next);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("lang", next);
+    }
+  }
+
+  return (
+    <div className="bg-background">
+      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-blur:bg-background/75">
+        <div className="container flex h-16 items-center justify-between py-4">
+          <div className="flex items-center space-x-4">
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" className="md:hidden">
+                  Menu
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="flex flex-col space-y-4">
+                  <Link onClick={() => setOpen(false)} href="/" className="text-base">
+                    Home
+                  </Link>
+                  <Link onClick={() => setOpen(false)} href="/about" className="text-base">
+                    About
+                  </Link>
+                  <Link onClick={() => setOpen(false)} href="/contact" className="text-base">
+                    Contact
+                  </Link>
+                  <div className="pt-2">
+                    <div className="text-xs text-muted-foreground mb-2">Language</div>
+                    <Select defaultValue={lang} onValueChange={(v) => { onLangChange(v); }}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Language" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="en">English</SelectItem>
+                        <SelectItem value="vi">Tiếng Việt</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+            <nav className="hidden items-center space-x-6 md:flex">
+              <Link href="/" className="text-base">
+                Home
+              </Link>
+              <Link href="/about" className="text-base">
+                About
+              </Link>
+              <Link href="/contact" className="text-base">
+                Contact
+              </Link>
+              <div className="flex items-center">
+                <label htmlFor="lang-desktop" className="sr-only">Language</label>
+                <Select defaultValue={lang} onValueChange={onLangChange}>
+                  <SelectTrigger id="lang-desktop" className="w-[130px]">
+                    <SelectValue placeholder="Language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="en">English</SelectItem>
+                    <SelectItem value="vi">Tiếng Việt</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+      {/* /** rest of code here **/ */}
+    </div>
+  );
+}
