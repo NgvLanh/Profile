@@ -64,17 +64,13 @@ export function CertificationsSection({
               </p>
             </CardContent>
             <CardFooter className='mt-auto'>
-              {c.verifyUrl ? (
+              {c.verifyUrl && (
                 <Link
                   href={c.verifyUrl}
                   className='text-sm underline underline-offset-4 hover:text-foreground'
                 >
                   View certificate
                 </Link>
-              ) : (
-                <span className='text-sm text-muted-foreground'>
-                  No verification link
-                </span>
               )}
             </CardFooter>
           </Card>
