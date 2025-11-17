@@ -59,12 +59,15 @@ export function SiteHeader() {
           </Link>
           <Link
             href='https://github.com/NgvLanh'
+            target='_blank'
             className='text-muted-foreground transition-colors hover:text-foreground'
           >
             GitHub
           </Link>
           <Button asChild variant='outline'>
-            <Link href='/resume.pdf'>Resume</Link>
+            <Link href='/resume.pdf' target='_blank'>
+              Resume
+            </Link>
           </Button>
         </nav>
 

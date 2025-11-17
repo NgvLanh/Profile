@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Link from 'next/link';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 type Project = {
   title: string;
@@ -15,6 +16,7 @@ type Project = {
   sourceHref: string;
   image: string;
   tags: string[];
+  status?: 'active' | 'inactive';
 };
 
 const defaultProjects: Project[] = [
@@ -26,6 +28,27 @@ const defaultProjects: Project[] = [
     sourceHref: 'https://github.com/NgvLanh/Templar-Mail',
     image: '/templar-mail.png',
     tags: ['Java', 'Spring MVC', 'Thymleaf', 'Jquery', 'Bootstrap', 'Supabase'],
+    status: 'active',
+  },
+  {
+    title: 'Sales Management System',
+    description:
+      'A desktop application for managing sales, inventory, and customer data in retail businesses.',
+    webHref: '',
+    sourceHref: '',
+    image: '/sales-management-system.png',
+    tags: ['C#', 'Entity Framework', 'Winforms', 'SQL Server'],
+    status: 'inactive',
+  },
+  {
+    title: 'Coza Store',
+    description:
+      'A web application for managing and selling products online with user authentication and payment integration.',
+    webHref: '',
+    sourceHref: '',
+    image: '/coza-store.png',
+    tags: ['React', 'Bootstrap', 'Jquery', 'Java', 'Spring Boot', 'MySQL'],
+    status: 'inactive',
   },
 ];
 
@@ -76,13 +99,28 @@ export function ProjectsSection({
               </div>
             </CardContent>
             <CardFooter className='mt-auto'>
-              <Link
-                href={p.webHref}
-                className='text-sm font-medium text-foreground underline-offset-4 hover:underline'
-                target='_blank'
-              >
-                Go to website
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  {p.status === 'active' ? (
+                    <Link
+                      href={p.webHref}
+                      target='_blank'
+                      className='text-sm font-medium hover:underline'
+                    >
+                      Visit Website
+                    </Link>
+                  ) : (
+                    <span className='text-sm font-medium text-gray-400 cursor-not-allowed'>
+                      Non Deployed
+                    </span>
+                  )}
+                </TooltipTrigger>
+                <TooltipContent>
+                  {p.status === 'active'
+                    ? 'Click to visit the website'
+                    : 'This project is not deployed yet'}
+                </TooltipContent>
+              </Tooltip>
             </CardFooter>
           </Card>
         ))}
