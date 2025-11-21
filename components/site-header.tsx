@@ -83,64 +83,51 @@ export function SiteHeader() {
                 <Menu className='h-5 w-5' />
               </Button>
             </SheetTrigger>
-            <SheetContent side='right'>
-              <div className='mt-8 grid gap-4'>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#projects'
-                  className='text-base'
-                >
-                  Projects
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#contact'
-                  className='text-base'
-                >
-                  Contact
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#skills'
-                  className='text-base'
-                >
-                  Skills
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#experience'
-                  className='text-base'
-                >
-                  Experience
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#education'
-                  className='text-base'
-                >
-                  Education
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='#certifications'
-                  className='text-base'
-                >
-                  Certs
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='https://github.com'
-                  className='text-base'
-                >
-                  GitHub
-                </Link>
-                <Link
-                  onClick={() => setOpen(false)}
-                  href='/resume.pdf'
-                  className='text-base'
-                >
-                  Resume
-                </Link>
+            <SheetContent side='right' className='w-[300px] sm:w-[400px]'>
+              <div className='flex flex-col gap-8'>
+                <div>
+                  <h2 className='text-lg font-semibold m-3'>Navigation</h2>
+                  <nav className='space-y-3'>
+                    {[
+                      { href: '#projects', label: 'Projects' },
+                      { href: '#skills', label: 'Skills' },
+                      { href: '#experience', label: 'Experience' },
+                      { href: '#education', label: 'Education' },
+                      { href: '#certifications', label: 'Certifications' },
+                      { href: '#contact', label: 'Contact' },
+                    ].map((item) => (
+                      <Link
+                        key={item.href}
+                        onClick={() => setOpen(false)}
+                        href={item.href}
+                        className='block text-sm text-muted-foreground hover:text-foreground transition-colors px-3'
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+                <div className='border-t pt-6 space-y-3 px-3'>
+                  <Button asChild className='w-full' variant='default'>
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href='/resume.pdf'
+                      target='_blank'
+                    >
+                      Download Resume
+                    </Link>
+                  </Button>
+                  <Button asChild className='w-full' variant='outline'>
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href='https://github.com/NgvLanh'
+                      target='_blank'
+                    >
+                      <Github className='mr-2 h-4 w-4' />
+                      GitHub Profile
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
