@@ -31,7 +31,7 @@ const defaultExperience: Experience[] = [
     location: 'Can Tho City',
     description:
       'Developed the Work Scheduling system using Oracle Database. Built HRM system modules including Employee Transfer, Resignation, Leave Management, Insurance, and Employee Data Import.',
-    tags: ['Node.js', 'Oracle Database', 'HRM System'],
+    tags: ['Node.js', 'Backend Developer', 'Oracle Database', 'HRM System'],
     link: '#',
     logoUrl: '/mobifone.png',
   },
