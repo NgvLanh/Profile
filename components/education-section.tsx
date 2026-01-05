@@ -17,15 +17,15 @@ const defaultEducation: Education[] = [
       'Specialized in practical App & Web Development; completed industry-oriented projects using Java, C#, and modern frameworks.',
     logoUrl: '/fpt.png',
   },
-   {
-     school: 'Can Tho University',
-     degree: 'Information Technology',
-     period: '2025 - Now',
-     details:
-      'Studying core IT foundations, including algorithms, data structures, computer networks, databases, and software engineering.',
-     logoUrl: '/ctu.png',
+  // {
+     // school: 'Can Tho University',
+     // degree: 'Information Technology',
+     // period: '2025 - Now',
+     // details:
+     // 'Studying core IT foundations, including algorithms, data structures, computer networks, databases, and software engineering.',
+     // logoUrl: '/ctu.png',
   //   status: 'ongoing',
-   },
+ //  },
 ];
 
 export function EducationSection({
