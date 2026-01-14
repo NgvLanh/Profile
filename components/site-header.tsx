@@ -22,18 +22,6 @@ export function SiteHeader() {
 
         <nav className='hidden items-center gap-6 text-sm md:flex'>
           <Link
-            href='#projects'
-            className='text-muted-foreground transition-colors hover:text-foreground'
-          >
-            Projects
-          </Link>
-          <Link
-            href='#contact'
-            className='text-muted-foreground transition-colors hover:text-foreground'
-          >
-            Contact
-          </Link>
-          <Link
             href='#skills'
             className='text-muted-foreground transition-colors hover:text-foreground'
           >
@@ -46,23 +34,22 @@ export function SiteHeader() {
             Experience
           </Link>
           <Link
+            href='#projects'
+            className='text-muted-foreground transition-colors hover:text-foreground'
+          >
+            Projects
+          </Link>
+          <Link
             href='#education'
             className='text-muted-foreground transition-colors hover:text-foreground'
           >
             Education
           </Link>
           <Link
-            href='#certifications'
+            href='#contact'
             className='text-muted-foreground transition-colors hover:text-foreground'
           >
-            Certs
-          </Link>
-          <Link
-            href='https://github.com/NgvLanh'
-            target='_blank'
-            className='text-muted-foreground transition-colors hover:text-foreground'
-          >
-            GitHub
+            Contact
           </Link>
           <Button asChild variant='outline'>
             <Link href='/resume.pdf' target='_blank'>
